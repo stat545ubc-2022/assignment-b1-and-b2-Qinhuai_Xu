@@ -2,8 +2,33 @@
 title: "Assignment B-1"
 output: github_document
 ---
+```{R, message = FALSE}
+library("dplyr")
+library("testthat")
+```
+
 
 ## Exercise 1: Make a Function 
+
+```{R}
+#' Mode function
+#'
+#' This function is used to get the mode number/character in the column
+#'
+#' @param x is the input column
+#' @return the mode number/character will be returned
+#'
+mode <- function(x) {
+  uniq_value <- unique(x)
+  
+  freq <- tabulate(match(x, uniq_value))
+
+  uniq_value[freq == max(freq)]
+}
+```
+
+
+
 
 
 
@@ -15,7 +40,61 @@ output: github_document
 
 ## Exercise 3: Include examples
 
+```{R}
+iris %>%
+  group_by(Species) %>%
+  count() %>%
+  arrange(desc(n))
+```
 
+There are 50 samples for each species, the `mode` function should return **all** of these species.
+
+```{R}
+mode(iris$Species)
+```
+
+```{R}
+mtcars %>%
+  group_by(cyl) %>%
+  count() %>%
+  arrange(desc(n))
+```
+
+There are 14 samples with `cyl=8`, the `mode` function should return **8**.
+
+```{R}
+mode(mtcars$cyl)
+```
 
 
 ## Exercise 4: Test the Function
+
+### Test 1:
+
+```{R}
+test_that("Test 1:", {
+  expect_equal(mode(c(NA, NA, "A", "B", "C", "A", "A")), "A")
+})
+
+
+```
+
+### Test 2:
+
+```{R}
+test_that("Test 2:", {
+  expect_equal(is.na(mode(numeric(0))), TRUE)
+})
+```
+
+### Test 3:
+
+```{R}
+test_that("Test 3:", {
+  expect_error(mode(iris$Species, mtcars$cyl))
+})
+
+```
+
+
+
