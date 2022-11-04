@@ -6,16 +6,16 @@ library("dplyr")
 library("testthat")
 ```
 
-## Exercise 1: Make a Function
+## Exercise 1: Implement the function
 
 ``` r
 #' Mode function
 #'
 #' This function is used to get the mode(most appearing) number/character in the column
 #'
-#' @param x is the input column
+#' @param x the input list
 #' 
-#' @return the mode number/character will be returned
+#' @return the mode(most appearing) number/character of input list 
 #' @export
 #'
 Mode <- function(x) {
@@ -27,13 +27,13 @@ Mode <- function(x) {
 }
 ```
 
-## Exercise 2: Document your Function
+## Exercise 2: Document the function
 
 **See above**
 
 ## Exercise 3: Include examples
 
-**Example 1:**
+### Example 1
 
 ``` r
 iris %>%
@@ -60,7 +60,7 @@ Mode(iris$Species)
     ## [1] setosa     versicolor virginica 
     ## Levels: setosa versicolor virginica
 
-**Example 2:**
+### Example 2
 
 ``` r
 mtcars %>%
@@ -86,9 +86,11 @@ Mode(mtcars$cyl)
 
     ## [1] 8
 
-## Exercise 4: Test the Function
+## Exercise 4: Test the function
 
-### Test 1:
+### Test 1
+
+Vector with NA’s
 
 ``` r
 test_that("Test 1:", {
@@ -96,19 +98,23 @@ test_that("Test 1:", {
 })
 ```
 
-    ## Test passed 😀
+    ## Test passed 😸
 
-### Test 2:
+### Test 2
+
+Vector of length 0, like numeric(0)
 
 ``` r
 test_that("Test 2:", {
-  expect_equal(is.na(Mode(numeric(0))), TRUE)
+  expect_true(is.na(Mode(numeric(0))))
 })
 ```
 
-    ## Test passed 😀
+    ## Test passed 🌈
 
-### Test 3:
+### Test 3
+
+Redundant inputs
 
 ``` r
 test_that("Test 3:", {
@@ -116,4 +122,28 @@ test_that("Test 3:", {
 })
 ```
 
-    ## Test passed 🥇
+    ## Test passed 🎊
+
+### Test 4
+
+Vector with no NA’s and numeric
+
+``` r
+test_that("Test 4:", {
+  expect_equal(Mode(c(1, 2, 1, 1, 1)), 1)
+})
+```
+
+    ## Test passed 🎊
+
+### Test 5
+
+Vector with no NA’s and character
+
+``` r
+test_that("Test 5:", {
+  expect_equal(Mode(c("A", "B", "C", "A", "A")), "A")
+})
+```
+
+    ## Test passed 😀
