@@ -11,7 +11,7 @@ library("testthat")
 ``` r
 #' Mode function
 #'
-#' This function is used to get the mode(most appearing) number/character in the column
+#' This function is used to get the mode(most appearing) number/character in the input list
 #'
 #' @param x the input list
 #' 
@@ -110,7 +110,7 @@ test_that("Test 2:", {
 })
 ```
 
-    ## Test passed 🌈
+    ## Test passed 🎊
 
 ### Test 3
 
@@ -122,7 +122,7 @@ test_that("Test 3:", {
 })
 ```
 
-    ## Test passed 🎊
+    ## Test passed 🥳
 
 ### Test 4
 
@@ -134,7 +134,7 @@ test_that("Test 4:", {
 })
 ```
 
-    ## Test passed 🎊
+    ## Test passed 🌈
 
 ### Test 5
 
@@ -146,4 +146,4 @@ test_that("Test 5:", {
 })
 ```
 
-    ## Test passed 😀
+    ## Test passed 🌈

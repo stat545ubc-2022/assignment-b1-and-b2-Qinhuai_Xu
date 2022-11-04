@@ -13,7 +13,7 @@ library("testthat")
 ```{R}
 #' Mode function
 #'
-#' This function is used to get the mode(most appearing) number/character in the column
+#' This function is used to get the mode(most appearing) number/character in the input list
 #'
 #' @param x the input list
 #' 
