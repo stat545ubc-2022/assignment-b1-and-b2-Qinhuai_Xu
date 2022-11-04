@@ -11,12 +11,14 @@ library("testthat")
 ``` r
 #' Mode function
 #'
-#' This function is used to get the mode number/character in the column
+#' This function is used to get the mode(most appearing) number/character in the column
 #'
 #' @param x is the input column
+#' 
 #' @return the mode number/character will be returned
+#' @export
 #'
-mode <- function(x) {
+Mode <- function(x) {
   uniq_value <- unique(x)
   
   freq <- tabulate(match(x, uniq_value))
@@ -27,7 +29,11 @@ mode <- function(x) {
 
 ## Exercise 2: Document your Function
 
+**See above**
+
 ## Exercise 3: Include examples
+
+**Example 1:**
 
 ``` r
 iris %>%
@@ -44,15 +50,17 @@ iris %>%
     ## 2 versicolor    50
     ## 3 virginica     50
 
-There are 50 samples for each species, the `mode` function should return
+There are 50 samples for each species, the `Mode` function should return
 **all** of these species.
 
 ``` r
-mode(iris$Species)
+Mode(iris$Species)
 ```
 
     ## [1] setosa     versicolor virginica 
     ## Levels: setosa versicolor virginica
+
+**Example 2:**
 
 ``` r
 mtcars %>%
@@ -69,11 +77,11 @@ mtcars %>%
     ## 2     4    11
     ## 3     6     7
 
-There are 14 samples with `cyl=8`, the `mode` function should return
+There are 14 samples with `cyl=8`, the `Mode` function should return
 **8**.
 
 ``` r
-mode(mtcars$cyl)
+Mode(mtcars$cyl)
 ```
 
     ## [1] 8
@@ -84,28 +92,28 @@ mode(mtcars$cyl)
 
 ``` r
 test_that("Test 1:", {
-  expect_equal(mode(c(NA, NA, "A", "B", "C", "A", "A")), "A")
+  expect_equal(Mode(c(NA, NA, "A", "B", "C", "A", "A")), "A")
 })
 ```
 
-    ## Test passed 🌈
+    ## Test passed 😀
 
 ### Test 2:
 
 ``` r
 test_that("Test 2:", {
-  expect_equal(is.na(mode(numeric(0))), TRUE)
+  expect_equal(is.na(Mode(numeric(0))), TRUE)
 })
 ```
 
-    ## Test passed 😸
+    ## Test passed 😀
 
 ### Test 3:
 
 ``` r
 test_that("Test 3:", {
-  expect_error(mode(iris$Species, mtcars$cyl))
+  expect_error(Mode(iris$Species, mtcars$cyl))
 })
 ```
 
-    ## Test passed 😀
+    ## Test passed 🥇
