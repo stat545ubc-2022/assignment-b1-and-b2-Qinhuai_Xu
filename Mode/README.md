@@ -14,7 +14,7 @@ the input list
 You can install the development version of Mode like so:
 
 ``` r
-install_github("stat545ubc-2022/assignment-b1-and-b2-Qinhuai_Xu/Mode", ref = "1.0.0")
+install_github("stat545ubc-2022/assignment-b1-and-b2-Qinhuai_Xu/Mode")
 ```
 
 ## Example
